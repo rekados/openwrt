@@ -729,7 +729,24 @@ define Device/linksys_mr8300
 	IMAGE/factory.bin  := append-kernel | pad-to $$$$(KERNEL_SIZE) | append-ubi | linksys-image type=MR8300
 	DEVICE_PACKAGES := ath10k-firmware-qca9888-ct kmod-usb-ledtrig-usbport
 endef
-TARGET_DEVICES += linksys_mr8300
+TARGET_DEVICES += linksys_mr8300 
+
+define Device/linksys_mr9000
+	$(call Device/FitzImage)
+	$(call Device/kernel-size-6350-8300)
+	DEVICE_VENDOR := Linksys
+	DEVICE_MODEL := MR9000
+	SOC := qcom-ipq4019
+	KERNEL_SIZE := 5120k
+	IMAGE_SIZE := 84992k
+	BLOCKSIZE := 128k
+	PAGESIZE := 2048
+	UBINIZE_OPTS := -E 5    # EOD marks to "hide" factory sig at EOF
+	IMAGES += factory.bin
+	IMAGE/factory.bin  := append-kernel | pad-to $$$$(KERNEL_SIZE) | append-ubi | linksys-image type=MR9000
+	DEVICE_PACKAGES := ath10k-firmware-qca9884-ct ipq-wifi-linksys_mr9000 kmod-usb-ledtrig-usbport
+endef
+TARGET_DEVICES += linksys_mr9000
 
 define Device/linksys_whw03
 	$(call Device/FitzImage)
