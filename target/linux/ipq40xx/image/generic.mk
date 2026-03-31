@@ -733,7 +733,7 @@ define Device/linksys_mr9000
 	UBINIZE_OPTS := -E 5    # EOD marks to "hide" factory sig at EOF
 	IMAGES += factory.bin
 	IMAGE/factory.bin  := append-kernel | pad-to $$$$(KERNEL_SIZE) | append-ubi | linksys-image type=MR9000
-	DEVICE_PACKAGES := ath10k-firmware-qca9884-ct ipq-wifi-linksys_mr9000 kmod-usb-ledtrig-usbport
+	DEVICE_PACKAGES := ath10k-firmware-qca9984-ct ipq-wifi-linksys_mr9000 kmod-usb-ledtrig-usbport
 endef
 TARGET_DEVICES += linksys_mr9000
 
